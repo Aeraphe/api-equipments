@@ -21,5 +21,5 @@ io.on('connection', (socket: SocketIO.Socket) => {
 
 
 server.listen(PORT, () => {
-    console.log('Express server listening ApiGateway Https  on port ' + PORT);
+    console.log('Express server listening ApiEquipments Https  on port ' + PORT);
 });

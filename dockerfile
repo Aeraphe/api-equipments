@@ -16,7 +16,6 @@ RUN npm install -g ts-node
 
 RUN npm install typeorm -g
 
-
 # USER root
 
 COPY . $HOME/api-equipments

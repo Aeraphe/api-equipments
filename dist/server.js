@@ -18,6 +18,6 @@ io.on('connection', function (socket) {
     console.log('a user connected');
 });
 server.listen(PORT, function () {
-    console.log('Express server listening ApiGateway Https  on port ' + PORT);
+    console.log('Express server listening ApiEquipments Https  on port ' + PORT);
 });
 //# sourceMappingURL=server.js.map

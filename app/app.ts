@@ -4,11 +4,9 @@ import * as bodyParser from 'body-parser';
 import * as path from 'path';
 import CoreRoutes from './routes/app.core.routes';
 import MongoDb from './shared/services/mongodb';
-import * as session from 'express-session';
 import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
-
 import "reflect-metadata";
 
 

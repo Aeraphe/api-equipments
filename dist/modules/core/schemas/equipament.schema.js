@@ -1,8 +1,9 @@
-import { Schema, Model } from 'mongoose';
-import * as mongoose from 'mongoose';
-import { IRecordModel } from '../interfaces/record.model.interface';
-
-export const RecordSchema: Schema = new Schema({
+"use strict";
+var _this = this;
+Object.defineProperty(exports, "__esModule", { value: true });
+var mongoose_1 = require("mongoose");
+var mongoose = require("mongoose");
+exports.EquipamentSchema = new mongoose_1.Schema({
     userId: { type: String, required: 'Usuário necessário' },
     task: {
         type: [{ id: String }],
@@ -19,17 +20,13 @@ export const RecordSchema: Schema = new Schema({
     status: [{ name: String, date: Date }],
     deployment: { type: Array }
 });
-
-RecordSchema.pre('save', next => {
-    let now = new Date();
-    if (!this.createdAt) {
+exports.EquipamentSchema.pre('save', function (next) {
+    var now = new Date();
+    if (!_this.createdAt) {
         console.log('Create Date User');
-        this.createdAt = now;
+        _this.createdAt = now;
     }
     next();
 });
-
-export const Record: Model<IRecordModel> = mongoose.model<IRecordModel>(
-    'records',
-    RecordSchema
-);
+exports.EquipamentModel = mongoose.model('records', exports.EquipamentSchema);
+//# sourceMappingURL=equipament.schema.js.map

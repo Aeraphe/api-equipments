@@ -15,14 +15,14 @@ class MongoDb {
     public async connect(): Promise<any> {
         try {
             this.db = await mongoose.connect(
-                'mongodb://mongo:27017/ares',
+                'mongodb://mongo:27017/api-equipaments',
                 {
                     
                     useNewUrlParser: true,
 
                 }
             );
-            console.log('Connected to db', new Date());
+            console.log('Connected to db Api Equipaments', new Date());
             this.setDb.next(this.db);
             return this.db;
         } catch (error) {

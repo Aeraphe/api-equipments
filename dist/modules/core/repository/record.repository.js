@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var record_schema_1 = require("../schemas/record.schema");
+var equipament_schema_1 = require("../schemas/equipament.schema");
 var rxjs_1 = require("rxjs");
-var RecordRepository = /** @class */ (function () {
-    function RecordRepository() {
+var EquipamentRepository = /** @class */ (function () {
+    function EquipamentRepository() {
     }
-    RecordRepository.prototype.create = function (req) {
-        var newRecord = new record_schema_1.Record(req.body);
-        return rxjs_1.from(newRecord
+    EquipamentRepository.prototype.create = function (req) {
+        var Equipament = new equipament_schema_1.EquipamentModel(req.body);
+        return rxjs_1.from(Equipament
             .save()
             .then(function (record) {
             var response = { status: 200, record: record };
@@ -18,8 +18,8 @@ var RecordRepository = /** @class */ (function () {
             return response;
         }));
     };
-    return RecordRepository;
+    return EquipamentRepository;
 }());
-exports.RecordRepository = RecordRepository;
-exports.default = new RecordRepository();
+exports.EquipamentRepository = EquipamentRepository;
+exports.default = new EquipamentRepository();
 //# sourceMappingURL=record.repository.js.map

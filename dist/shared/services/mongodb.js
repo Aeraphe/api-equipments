@@ -52,12 +52,12 @@ var MongoDb = /** @class */ (function () {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
                         _a = this;
-                        return [4 /*yield*/, mongoose.connect('mongodb://mongo:27017/ares', {
+                        return [4 /*yield*/, mongoose.connect('mongodb://mongo:27017/api-equipaments', {
                                 useNewUrlParser: true,
                             })];
                     case 1:
                         _a.db = _b.sent();
-                        console.log('Connected to db', new Date());
+                        console.log('Connected to db Api Equipaments', new Date());
                         this.setDb.next(this.db);
                         return [2 /*return*/, this.db];
                     case 2:

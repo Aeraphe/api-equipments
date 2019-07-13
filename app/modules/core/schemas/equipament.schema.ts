@@ -1,8 +1,9 @@
 import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { IRecordModel } from '../interfaces/record.model.interface';
+import { EquipamentContract} from '../contract/equipament.contract';
 
-export const RecordSchema: Schema = new Schema({
+
+export const EquipamentSchema: Schema = new Schema({
     userId: { type: String, required: 'Usuário necessário' },
     task: {
         type: [{ id: String }],
@@ -20,7 +21,7 @@ export const RecordSchema: Schema = new Schema({
     deployment: { type: Array }
 });
 
-RecordSchema.pre('save', next => {
+EquipamentSchema.pre('save', next => {
     let now = new Date();
     if (!this.createdAt) {
         console.log('Create Date User');
@@ -29,7 +30,7 @@ RecordSchema.pre('save', next => {
     next();
 });
 
-export const Record: Model<IRecordModel> = mongoose.model<IRecordModel>(
+export const EquipamentModel: Model<EquipamentContract> = mongoose.model<EquipamentContract>(
     'records',
-    RecordSchema
+    EquipamentSchema
 );

@@ -1,19 +1,21 @@
-import { Record } from '../schemas/record.schema';
+import { EquipamentModel } from '../schemas/equipament.schema';
 import { Request } from 'express';
 import { Observable, from } from 'rxjs';
-import { IRecordModel } from '../interfaces/record.model.interface';
+import { EquipamentContract } from '../contract/equipament.contract';
 
 interface IResponse {
     status: number;
-    record?: IRecordModel;
+    record?: EquipamentContract;
     error?: any;
 }
 
-export class RecordRepository {
+export class EquipamentRepository {
+
     create(req: Request): Observable<IResponse> {
-        const newRecord = new Record(req.body);
+        const Equipament = new EquipamentModel(req.body);
+
         return from(
-            newRecord
+            Equipament
                 .save()
                 .then(record => {
                     const response: IResponse = { status: 200, record };
@@ -27,4 +29,4 @@ export class RecordRepository {
     }
 }
 
-export default new RecordRepository();
+export default new EquipamentRepository();

@@ -1,36 +1,31 @@
 import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { EquipamentContract} from '../contract/equipament.contract';
-
+import { EquipamentContract } from '../contract/equipament.contract';
 
 export const EquipamentSchema: Schema = new Schema({
-    userId: { type: String, required: 'Usuário necessário' },
-    task: {
-        type: [{ id: String }],
-        required: 'Favor Selecionar uma Atividade'
+    _id: mongoose.Types.ObjectId,
+    type: {
+        type: String,
+        required: 'Favor Definir um tipo de equipamento' //Celular, tablet
     },
-    description: { type: String, required: 'Favor inserir uma Descrição' },
-    responsible: [{ userId: String, precentage: Number, file: [] }],
-    start: Date,
-    finish: Date,
-    categories: [{ name: String, slug: String }],
-    severity: { name: String, slug: String },
-    impact: { name: String, slug: String },
+    title: { type: String, required: 'Favor inserir um nome' },
+    line: String,
+    category: String,
+    version: String,
+    description: { type: String, required: 'Favor inserir um nome' },
     createdAt: Date,
-    status: [{ name: String, date: Date }],
-    deployment: { type: Array }
+
 });
 
 EquipamentSchema.pre('save', next => {
     let now = new Date();
     if (!this.createdAt) {
-        console.log('Create Date User');
         this.createdAt = now;
     }
     next();
 });
 
 export const EquipamentModel: Model<EquipamentContract> = mongoose.model<EquipamentContract>(
-    'records',
+    'equipaments',
     EquipamentSchema
 );

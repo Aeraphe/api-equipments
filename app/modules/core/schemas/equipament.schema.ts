@@ -2,7 +2,6 @@ import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { EquipamentContract } from '../contract/equipament.contract';
 
-
 export const EquipamentSchema: Schema = new Schema({
     _id: mongoose.Types.ObjectId,
     type: {

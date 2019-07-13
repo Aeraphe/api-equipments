@@ -4,29 +4,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
 exports.EquipamentSchema = new mongoose_1.Schema({
-    userId: { type: String, required: 'Usuário necessário' },
-    task: {
-        type: [{ id: String }],
-        required: 'Favor Selecionar uma Atividade'
+    _id: mongoose.Types.ObjectId,
+    type: {
+        type: String,
+        required: 'Favor Definir um tipo de equipamento' //Celular, tablet
     },
-    description: { type: String, required: 'Favor inserir uma Descrição' },
-    responsible: [{ userId: String, precentage: Number, file: [] }],
-    start: Date,
-    finish: Date,
-    categories: [{ name: String, slug: String }],
-    severity: { name: String, slug: String },
-    impact: { name: String, slug: String },
+    title: { type: String, required: 'Favor inserir um nome' },
+    line: String,
+    category: String,
+    version: String,
+    description: { type: String, required: 'Favor inserir um nome' },
     createdAt: Date,
-    status: [{ name: String, date: Date }],
-    deployment: { type: Array }
 });
 exports.EquipamentSchema.pre('save', function (next) {
     var now = new Date();
     if (!_this.createdAt) {
-        console.log('Create Date User');
         _this.createdAt = now;
     }
     next();
 });
-exports.EquipamentModel = mongoose.model('records', exports.EquipamentSchema);
+exports.EquipamentModel = mongoose.model('equipaments', exports.EquipamentSchema);
 //# sourceMappingURL=equipament.schema.js.map

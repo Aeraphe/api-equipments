@@ -23,5 +23,5 @@ exports.EquipmentSchema.pre('save', function (next) {
     }
     next();
 });
-exports.EquipamentModel = mongoose.model('equipaments', exports.EquipmentSchema);
-//# sourceMappingURL=equipament.schema.js.map
+exports.EquipmentModel = mongoose.model('equipaments', exports.EquipmentSchema);
+//# sourceMappingURL=equipment.schema.js.map

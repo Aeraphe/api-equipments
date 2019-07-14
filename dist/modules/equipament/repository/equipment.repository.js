@@ -106,7 +106,7 @@ var Repository = /** @class */ (function () {
     }
     Repository.prototype.create = function (req) {
         try {
-            var Equipament = new equipment_schema_1.EquipamentModel(req.body);
+            var Equipament = new equipment_schema_1.EquipmentModel(req.body);
             return rxjs_1.from(Equipament
                 .save()
                 .then(function (company) {
@@ -123,4 +123,4 @@ var Repository = /** @class */ (function () {
     return Repository;
 }());
 exports.default = new Repository();
-//# sourceMappingURL=equipament.repository.js.map
+//# sourceMappingURL=equipment.repository.js.map

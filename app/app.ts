@@ -2,7 +2,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-import CoreRoutes from './routes/app.core.routes';
+import EquipamentRoutes from './routes/app.equipament.routes';
 import MongoDb from './shared/services/mongodb';
 import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
@@ -38,7 +38,7 @@ export class App {
         // Request protection
         this.app.use(helmet());
         // Default Api Route Group
-        this.app.use('/api/v1', CoreRoutes);
+        this.app.use('/api/v1', EquipamentRoutes);
         // Redirect unmatch routes
         this.app.use((req, res) => {
           

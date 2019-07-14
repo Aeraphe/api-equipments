@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 
 export interface EquipmentContract extends Document {
-    _id: string,
+
     type: string,//Celular, tablet
     factory: string,
     title: string,

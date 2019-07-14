@@ -16,8 +16,8 @@ class Repository {
             return from(
                 Equipament
                     .save()
-                    .then(company => {
-                        return { status: 200, company };
+                    .then(equipment => {
+                        return { status: 200, equipment };
                     })
                     .catch(error => {
                         return { status: 500, error };

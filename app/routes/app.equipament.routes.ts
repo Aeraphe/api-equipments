@@ -7,9 +7,6 @@ EquipmentRoutes.post('/', EquipmentController.create);
 
 
 
-
-
-
 let router = Router();
 
 

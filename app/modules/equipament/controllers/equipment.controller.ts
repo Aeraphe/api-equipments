@@ -5,8 +5,8 @@ import { Request, Response } from 'express';
 class Controller {
     create(req: Request, res: Response) {
         try {
-            EquipmentRepository.create(req).subscribe(record => {
-                const data = EquipmentResponse.create(req, record, 'creste');
+            EquipmentRepository.create(req).subscribe(equipment => {
+                const data = EquipmentResponse.create(req, equipment, 'create');
                 res.status(data.status).json(data);
             });
         } catch (e) {

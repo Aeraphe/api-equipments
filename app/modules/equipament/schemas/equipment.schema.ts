@@ -1,18 +1,28 @@
 import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { EquipmentContract } from '../contract/equipment.contract';
+import { EquipmentDetailsSchema } from './equipment-details.schema';
+import { EquipmentRepairSchema } from './equipment-repair.schema';
+
+
 
 export const EquipmentSchema: Schema = new Schema({
     type: {
         type: String,
         required: 'Favor Definir um tipo de equipamento' //Celular, tablet
     },
-    factory: { type: String, required: "Favor inserir um fabricante" },
+    factory: { _id: String, name: String },
     title: { type: String, required: 'Favor inserir um nome' },
-    line: { type: String, uppercase: true },
-    category: String,
-    version: String,
     description: { type: String },
+    calssify: {
+        category: { type: String, uppercase: true }, //J
+        model: { type: String, uppercase: true }, //J1
+        version: { type: String, uppercase: true },//Turbo
+        year: { type: String, uppercase: true } //2016
+    },
+    tags: [], //For search
+    details: EquipmentDetailsSchema,
+    repairs: [EquipmentRepairSchema],
     createdAt: Date,
 
 });
@@ -26,6 +36,6 @@ EquipmentSchema.pre('save', next => {
 });
 
 export const EquipmentModel: Model<EquipmentContract> = mongoose.model<EquipmentContract>(
-    'equipaments',
+    'equipments',
     EquipmentSchema
 );

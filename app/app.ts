@@ -8,6 +8,7 @@ import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
 import "reflect-metadata";
+import RoutePathService from './shared/services/route-path.service';
 
 
 export class App {
@@ -41,7 +42,7 @@ export class App {
         this.app.use('/api/v1', EquipamentRoutes);
         // Redirect unmatch routes
         this.app.use((req, res) => {
-          
+          res.send('Não sei onde esta o equipamento' + RoutePathService.getRoute(req))
         });
     }
 }

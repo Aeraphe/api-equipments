@@ -15,13 +15,12 @@ let router = Router();
 
 // Not Found
 router.get('/', function (req: Request, res: Response) {
-res.send('Rota não encontrada')
+    res.send('Rota da API de Equipamentos')
 });
 
 
 // Define the Core routes (Demilitarized Zone)
 router.use(
-    '/equipament',
     EquipmentRoutes
 );
 

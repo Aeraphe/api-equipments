@@ -9,12 +9,7 @@ COPY   package.json npm-shrinkwrap.json $HOME/api-equipments/
 # RUN chown -R app:app $HOME/*
 
 WORKDIR $HOME/api-equipments
-
-RUN npm i -g typescript
-
-RUN npm install -g ts-node 
-
-RUN npm install typeorm -g
+RUN npm install
 
 # USER root
 

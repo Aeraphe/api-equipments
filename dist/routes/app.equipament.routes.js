@@ -7,9 +7,9 @@ exports.EquipmentRoutes.post('/', equipment_controller_1.default.create);
 var router = express_1.Router();
 // Not Found
 router.get('/', function (req, res) {
-    res.send('Rota não encontrada');
+    res.send('Rota da API de Equipamentos');
 });
 // Define the Core routes (Demilitarized Zone)
-router.use('/equipament', exports.EquipmentRoutes);
+router.use(exports.EquipmentRoutes);
 exports.default = router;
 //# sourceMappingURL=app.equipament.routes.js.map

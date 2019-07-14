@@ -12,6 +12,6 @@ var httpsOptions = {
 };
 var server = https.createServer(httpsOptions, app);
 server.listen(PORT, function () {
-    console.log('Express server listening ApiEquipments Https  on port ' + PORT);
+    console.log('\x1b[33m%s\x1b[0m', 'Express server listening ApiEquipments Https  on port ' + PORT);
 });
 //# sourceMappingURL=server.js.map

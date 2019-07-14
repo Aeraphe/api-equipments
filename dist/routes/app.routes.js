@@ -10,4 +10,4 @@ router.get('/', function (req, res) {
 // Define the Core routes (Demilitarized Zone)
 router.use('/equipament', equipament_routes_1.EquipamentRoutes);
 exports.default = router;
-//# sourceMappingURL=app.core.routes.js.map
+//# sourceMappingURL=app.routes.js.map

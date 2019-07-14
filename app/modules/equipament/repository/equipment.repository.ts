@@ -28,27 +28,27 @@ class Repository {
         }
     }
 
-    // update(req): Observable<any> {
-    //         try {
-    //             return from(
-    //                 Company.findOneAndUpdate(
-    //                     { _id: req.params.id },
-    //                     { $set: req.body },
-    //                     { new: true }
-    //                 )
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error:', e);
-    //         }
-    //     }
+    update(req): Observable<any> {
+        try {
+            return from(
+                EquipmentModel.findOneAndUpdate(
+                    { _id: req.params.id },
+                    { $set: req.body },
+                    { new: true }
+                )
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error:', e);
+        }
+    }
     //     /**
-    //      * Update company Address
+    //      * Update equipment Address
     //      * @param req 
     //      */
     //     updateAddress(req): Observable<any> {
@@ -94,40 +94,40 @@ class Repository {
     //         }
     //     }
 
-    //     get(req: Request): Observable<any> {
-    //         try {
-    //             const id: any = req.params.id;
+    get(req: Request): Observable<any> {
+        try {
+            const id: any = req.params.id;
 
-    //             return from(
-    //                 Company.findOne({ _id: id })
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error on get company', e);
-    //         }
-    //     }
+            return from(
+                EquipmentModel.findOne({ _id: id })
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error on get equipment', e);
+        }
+    }
 
-    //     async getAll(req: Request, res: Response) {
-    //         Company.find({}, (err, company) => {
-    //             if (err) {
-    //                 return res.status(404).json({
-    //                     message: 'Não foi possível efetuar a operação',
-    //                     status: 404
-    //                 });
-    //             }
-    //             return res.status(200).json({
-    //                 message: 'Operação realizada com sucesso!!!',
-    //                 status: 200,
-    //                 data: [company],
-    //                 url: this.route.getRoute(req)
-    //             });
-    //         });
-    //     }
+    async getAll(req: Request, res: Response) {
+        EquipmentModel.find({}, (err, equipment) => {
+            if (err) {
+                return res.status(404).json({
+                    message: 'Não foi possível efetuar a operação',
+                    status: 404
+                });
+            }
+            return res.status(200).json({
+                message: 'Operação realizada com sucesso!!!',
+                status: 200,
+                data: [equipment],
+                url: this.route.getRoute(req)
+            });
+        });
+    }
 
 }
 

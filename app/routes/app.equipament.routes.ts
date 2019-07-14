@@ -1,9 +1,9 @@
 import { Request, Response, Router } from 'express';
-import EquipamentController from '../modules/equipament/controllers/equipament.controller';
+import EquipmentController from '../modules/equipament/controllers/equipment.controller';
 
-export const EquipamentRoutes = Router();
+export const EquipmentRoutes = Router();
 
-EquipamentRoutes.post('/', EquipamentController.create);
+EquipmentRoutes.post('/', EquipmentController.create);
 
 
 
@@ -22,7 +22,7 @@ res.send('Rota não encontrada')
 // Define the Core routes (Demilitarized Zone)
 router.use(
     '/equipament',
-    EquipamentRoutes
+    EquipmentRoutes
 );
 
 export default router;

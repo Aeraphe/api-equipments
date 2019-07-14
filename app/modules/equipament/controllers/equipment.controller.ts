@@ -1,12 +1,12 @@
-import EquipamentRepository from '../repository/equipament.repository';
-import EquipamentResponse from '../response/equipament.response';
+import EquipmentRepository from '../repository/equipment.repository';
+import EquipmentResponse from '../response/equipment.response';
 import { Request, Response } from 'express';
 
 class Controller {
     create(req: Request, res: Response) {
         try {
-            EquipamentRepository.create(req).subscribe(record => {
-                const data = EquipamentResponse.create(req, record, 'creste');
+            EquipmentRepository.create(req).subscribe(record => {
+                const data = EquipmentResponse.create(req, record, 'creste');
                 res.status(data.status).json(data);
             });
         } catch (e) {

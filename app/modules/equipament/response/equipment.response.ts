@@ -9,14 +9,14 @@ class Response extends AeroResponse {
     create(req: Request, data: any, type: string) {
         switch (type) {
             case 'create':
-                return this.createEquipament(req, data);
+                return this.createEquipment(req, data);
                 break;
             default:
                 break;
         }
     }
 
-    private createEquipament(req: Request, data: any) {
+    private createEquipment(req: Request, data: any) {
         if (data.status != 200) {
             return {
                 message: 'Não foi possível cadastrar o Equipamento',

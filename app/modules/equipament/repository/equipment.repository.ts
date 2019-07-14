@@ -1,4 +1,4 @@
-import { EquipamentModel } from '../schemas/equipament.schema';
+import { EquipmentModel } from '../schemas/equipment.schema';
 import {
     RoutePathService,
     routerPathService
@@ -12,7 +12,7 @@ class Repository {
 
     create(req: Request): Observable<any> {
         try {
-            const Equipament = new EquipamentModel(req.body);
+            const Equipament = new EquipmentModel(req.body);
             return from(
                 Equipament
                     .save()

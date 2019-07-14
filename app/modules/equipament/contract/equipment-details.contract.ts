@@ -10,9 +10,9 @@ interface Type {
     ]
 }
 
-export interface EquipamentDetailsContract extends Document {
+export interface EquipmentDetailsContract extends Document {
     _id: string,
-    equipament_id: string,
+    equipment_id: string,
     categories: Type[],
     createdAt: Date,
 }

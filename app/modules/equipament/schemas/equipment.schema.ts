@@ -1,8 +1,8 @@
 import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
-import { EquipamentContract } from '../contract/equipament.contract';
+import { EquipmentContract } from '../contract/equipment.contract';
 
-export const EquipamentSchema: Schema = new Schema({
+export const EquipmentSchema: Schema = new Schema({
     _id: mongoose.Types.ObjectId,
     type: {
         type: String,
@@ -17,7 +17,7 @@ export const EquipamentSchema: Schema = new Schema({
 
 });
 
-EquipamentSchema.pre('save', next => {
+EquipmentSchema.pre('save', next => {
     let now = new Date();
     if (!this.createdAt) {
         this.createdAt = now;
@@ -25,7 +25,7 @@ EquipamentSchema.pre('save', next => {
     next();
 });
 
-export const EquipamentModel: Model<EquipamentContract> = mongoose.model<EquipamentContract>(
+export const EquipmentModel: Model<EquipmentContract> = mongoose.model<EquipmentContract>(
     'equipaments',
-    EquipamentSchema
+    EquipmentSchema
 );

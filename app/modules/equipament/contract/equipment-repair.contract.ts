@@ -2,9 +2,9 @@ import { Document } from 'mongoose';
 
 
 
-export interface EquipamentRepairContract extends Document {
+export interface EquipmentRepairContract extends Document {
     _id: string;
-    equipament_id: string;
+    equipment_id: string;
     repair_type: string; //Troca de vidro
     repair_stuff: string[];
     files: [

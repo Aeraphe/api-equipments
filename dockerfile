@@ -4,12 +4,15 @@ FROM node:10.16.0
 
 ENV HOME=/home/app
 
-COPY   package.json npm-shrinkwrap.json $HOME/api-equipments/
+COPY   package.json $HOME/api-equipments/
 
 # RUN chown -R app:app $HOME/*
 
 WORKDIR $HOME/api-equipments
+
 RUN npm install
+
+RUN npm shrinkwrap
 
 # USER root
 

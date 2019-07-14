@@ -54,6 +54,5 @@ var Response = /** @class */ (function (_super) {
     };
     return Response;
 }(response_1.AeroResponse));
-exports.Response = Response;
 exports.default = new Response();
-//# sourceMappingURL=record.response.js.map
+//# sourceMappingURL=equipament.response.js.map

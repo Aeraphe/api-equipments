@@ -1,7 +1,7 @@
 import { AeroResponse } from '../../../core/response';
 import { Request } from 'express';
 
-export class RecordResponse extends AeroResponse {
+class Response extends AeroResponse {
     constructor() {
         super();
     }
@@ -9,22 +9,22 @@ export class RecordResponse extends AeroResponse {
     create(req: Request, data: any, type: string) {
         switch (type) {
             case 'create':
-                return this.createNewRecord(req, data);
+                return this.createEquipament(req, data);
                 break;
             default:
                 break;
         }
     }
 
-    private createNewRecord(req: Request, data: any) {
+    private createEquipament(req: Request, data: any) {
         if (data.status != 200) {
             return {
-                message: 'Não foi possível cadastrar o Cronograma',
+                message: 'Não foi possível cadastrar o Equipamento',
                 ...data
             };
         }
         return {
-            message: 'Cronograma cadastrado com sucesso!!!',
+            message: 'Equipamento cadastrado com sucesso!!!',
             status: data.status,
             data: [
                 {
@@ -36,4 +36,4 @@ export class RecordResponse extends AeroResponse {
     }
 }
 
-export default new RecordResponse();
+export default new Response();

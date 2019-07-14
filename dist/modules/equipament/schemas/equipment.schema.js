@@ -4,16 +4,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
 exports.EquipmentSchema = new mongoose_1.Schema({
-    _id: mongoose.Types.ObjectId,
     type: {
         type: String,
         required: 'Favor Definir um tipo de equipamento' //Celular, tablet
     },
+    factory: { type: String, required: "Favor inserir um fabricante" },
     title: { type: String, required: 'Favor inserir um nome' },
-    line: String,
+    line: { type: String, uppercase: true },
     category: String,
     version: String,
-    description: { type: String, required: 'Favor inserir um nome' },
+    description: { type: String },
     createdAt: Date,
 });
 exports.EquipmentSchema.pre('save', function (next) {

@@ -7,8 +7,8 @@ var Controller = /** @class */ (function () {
     }
     Controller.prototype.create = function (req, res) {
         try {
-            equipment_repository_1.default.create(req).subscribe(function (record) {
-                var data = equipment_response_1.default.create(req, record, 'creste');
+            equipment_repository_1.default.create(req).subscribe(function (equipment) {
+                var data = equipment_response_1.default.create(req, equipment, 'create');
                 res.status(data.status).json(data);
             });
         }

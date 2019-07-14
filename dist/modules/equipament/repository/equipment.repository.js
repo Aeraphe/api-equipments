@@ -109,8 +109,8 @@ var Repository = /** @class */ (function () {
             var Equipament = new equipment_schema_1.EquipmentModel(req.body);
             return rxjs_1.from(Equipament
                 .save()
-                .then(function (company) {
-                return { status: 200, company: company };
+                .then(function (equipment) {
+                return { status: 200, equipment: equipment };
             })
                 .catch(function (error) {
                 return { status: 500, error: error };

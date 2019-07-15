@@ -3,17 +3,26 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
+var equipment_details_schema_1 = require("./equipment-details.schema");
+var equipment_repair_schema_1 = require("./equipment-repair.schema");
 exports.EquipmentSchema = new mongoose_1.Schema({
-    _id: mongoose.Types.ObjectId,
     type: {
         type: String,
         required: 'Favor Definir um tipo de equipamento' //Celular, tablet
     },
+    factory: { _id: String, name: String },
     title: { type: String, required: 'Favor inserir um nome' },
-    line: String,
-    category: String,
-    version: String,
-    description: { type: String, required: 'Favor inserir um nome' },
+    description: { type: String },
+    calssify: {
+        category: { type: String, uppercase: true },
+        model: { type: String, uppercase: true },
+        version: { type: String, uppercase: true },
+        year: { type: String, uppercase: true } //2016
+    },
+    tags: [],
+    details: equipment_details_schema_1.EquipmentDetailsSchema,
+    repairs: [equipment_repair_schema_1.EquipmentRepairSchema],
+    images: [],
     createdAt: Date,
 });
 exports.EquipmentSchema.pre('save', function (next) {
@@ -23,5 +32,5 @@ exports.EquipmentSchema.pre('save', function (next) {
     }
     next();
 });
-exports.EquipmentModel = mongoose.model('equipaments', exports.EquipmentSchema);
+exports.EquipmentModel = mongoose.model('equipments', exports.EquipmentSchema);
 //# sourceMappingURL=equipment.schema.js.map

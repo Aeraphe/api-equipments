@@ -23,6 +23,7 @@ export const EquipmentSchema: Schema = new Schema({
     tags: [], //For search
     details: EquipmentDetailsSchema,
     repairs: [EquipmentRepairSchema],
+    images: [],
     createdAt: Date,
 
 });
@@ -34,6 +35,8 @@ EquipmentSchema.pre('save', next => {
     }
     next();
 });
+
+
 
 export const EquipmentModel: Model<EquipmentContract> = mongoose.model<EquipmentContract>(
     'equipments',

@@ -2,13 +2,14 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as path from 'path';
-import EquipamentRoutes from './routes/app.equipament.routes';
+import Routes from './app.routes';
 import MongoDb from './shared/services/mongodb';
 import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
 import "reflect-metadata";
 import RoutePathService from './shared/services/route-path.service';
+
 
 
 export class App {
@@ -39,7 +40,7 @@ export class App {
         // Request protection
         this.app.use(helmet());
         // Default Api Route Group
-        this.app.use('/api/v1', EquipamentRoutes);
+        this.app.use('/api/v1', Routes);
         // Redirect unmatch routes
         this.app.use((req, res) => {
           res.send('Não sei onde esta o equipamento' + RoutePathService.getRoute(req))

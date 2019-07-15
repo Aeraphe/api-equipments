@@ -6,51 +6,111 @@ var rxjs_1 = require("rxjs");
 var Repository = /** @class */ (function () {
     function Repository() {
         this.route = route_path_service_1.routerPathService;
+        // update(req): Observable<any> {
+        //         try {
+        //             return from(
+        //                 Company.findOneAndUpdate(
+        //                     { _id: req.params.id },
+        //                     { $set: req.body },
+        //                     { new: true }
+        //                 )
+        //                     .then(company => {
+        //                         return { status: 200, company };
+        //                     })
+        //                     .catch(error => {
+        //                         return { status: 500, error };
+        //                     })
+        //             );
+        //         } catch (e) {
+        //             console.log('Error:', e);
+        //         }
+        //     }
+        //     /**
+        //      * Update company Address
+        //      * @param req 
+        //      */
+        //     updateAddress(req): Observable<any> {
+        //         try {
+        //             return from(
+        //                 Company.findOneAndUpdate(
+        //                     { _id: req.params.companyId, 'address._id': req.params.addressId },
+        //                     { $set: req.body },
+        //                     { new: true }
+        //                 )
+        //                     .then(company => {
+        //                         return { status: 200, company };
+        //                     })
+        //                     .catch(error => {
+        //                         return { status: 500, error };
+        //                     })
+        //             );
+        //         } catch (e) {
+        //             console.log('Error:', e);
+        //         }
+        //     }
+        //     /**
+        //      * Update company Phones
+        //      * @param req 
+        //      */
+        //     updatePhones(req): Observable<any> {
+        //         try {
+        //             return from(
+        //                 Company.findOneAndUpdate(
+        //                     { _id: req.params.companyId, 'phones._id': req.params.phonesId },
+        //                     { $set: req.body },
+        //                     { new: true }
+        //                 )
+        //                     .then(company => {
+        //                         return { status: 200, company };
+        //                     })
+        //                     .catch(error => {
+        //                         return { status: 500, error };
+        //                     })
+        //             );
+        //         } catch (e) {
+        //             console.log('Error:', e);
+        //         }
+        //     }
+        //     get(req: Request): Observable<any> {
+        //         try {
+        //             const id: any = req.params.id;
+        //             return from(
+        //                 Company.findOne({ _id: id })
+        //                     .then(company => {
+        //                         return { status: 200, company };
+        //                     })
+        //                     .catch(error => {
+        //                         return { status: 500, error };
+        //                     })
+        //             );
+        //         } catch (e) {
+        //             console.log('Error on get company', e);
+        //         }
+        //     }
+        //     async getAll(req: Request, res: Response) {
+        //         Company.find({}, (err, company) => {
+        //             if (err) {
+        //                 return res.status(404).json({
+        //                     message: 'Não foi possível efetuar a operação',
+        //                     status: 404
+        //                 });
+        //             }
+        //             return res.status(200).json({
+        //                 message: 'Operação realizada com sucesso!!!',
+        //                 status: 200,
+        //                 data: [company],
+        //                 url: this.route.getRoute(req)
+        //             });
+        //         });
+        //     }
     }
-    Repository.prototype.get = function (req) {
-        try {
-            var id = req.params.id;
-            return rxjs_1.from(equipment_schema_1.EquipmentModel.findOne({ _id: id })
-                .then(function (equipment) {
-                return { status: 200, equipment: equipment };
-            })
-                .catch(function (error) {
-                return { status: 500, error: error };
-            }));
-        }
-        catch (e) {
-            console.log('Error on get equipment', e);
-        }
-    };
-    Repository.prototype.getAll = function (req, res) {
-        var _this = this;
-        return rxjs_1.from(equipment_schema_1.EquipmentModel.find().then(function (equipment) {
-            return res.status(200).json({
-                message: 'Operação realizada com sucesso!!!',
-                status: 200,
-                data: [equipment],
-                url: _this.route.getRoute(req)
-            });
-        }).catch(function (err) {
-            if (err) {
-                return res.status(404).json({
-                    message: 'Não foi possível efetuar a operação',
-                    status: 404
-                });
-            }
-        }));
-    };
     Repository.prototype.create = function (req) {
         try {
-            var tags = req.body.title.split(' ');
-            if (tags != null) {
-                req.body.tags = tags.slice();
-            }
             var Equipament = new equipment_schema_1.EquipmentModel(req.body);
             return rxjs_1.from(Equipament
                 .save()
-                .then(function (equipment) {
-                return { status: 200, equipment: equipment };
+                .then(function (company) {
+                return { status: 200, company: company };
             })
                 .catch(function (error) {
                 return { status: 500, error: error };
@@ -58,50 +118,6 @@ var Repository = /** @class */ (function () {
         }
         catch (e) {
             console.log('Error ao processar a operação: ', e);
-        }
-    };
-    Repository.prototype.update = function (req) {
-        try {
-            return rxjs_1.from(equipment_schema_1.EquipmentModel.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
-                .then(function (equipment) {
-                return { status: 200, equipment: equipment };
-            })
-                .catch(function (error) {
-                return { status: 500, error: error };
-            }));
-        }
-        catch (e) {
-            console.log('Error:', e);
-        }
-    };
-    Repository.prototype.delete = function (req) {
-        try {
-            return rxjs_1.from(equipment_schema_1.EquipmentModel.findByIdAndDelete(req.params.id)
-                .then(function (equipment) {
-                return { status: 200, equipment: equipment };
-            })
-                .catch(function (error) {
-                return { status: 500, error: error };
-            }));
-        }
-        catch (e) {
-            console.log('Error:', e);
-        }
-    };
-    Repository.prototype.search = function (req) {
-        try {
-            var search = req.params.search;
-            var userRegex = new RegExp(search, 'i');
-            return rxjs_1.from(equipment_schema_1.EquipmentModel.find({ title: userRegex })
-                .then(function (equipment) {
-                return { status: 200, equipment: equipment };
-            })
-                .catch(function (error) {
-                return { status: 500, error: error };
-            }));
-        }
-        catch (e) {
-            console.log('Error on get equipment', e);
         }
     };
     return Repository;

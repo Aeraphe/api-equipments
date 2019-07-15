@@ -2,8 +2,16 @@ import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { EquipmentContract } from '../contract/equipment.contract';
 import { EquipmentDetailsSchema } from './equipment-details.schema';
-import { EquipmentRepairSchema } from './equipment-repair.schema';
+import { EquipmentRepairContract } from '../contract/equipment-repair.contract';
 
+
+export const childEquipmentRepairSchema: Schema = new Schema({
+
+    type: String, //Troca de vidro
+    description: String,
+    createdAt: Date
+
+});
 
 
 export const EquipmentSchema: Schema = new Schema({
@@ -22,7 +30,7 @@ export const EquipmentSchema: Schema = new Schema({
     },
     tags: [], //For search
     details: EquipmentDetailsSchema,
-    repairs: [EquipmentRepairSchema],
+    repairs: [childEquipmentRepairSchema],
     images: [],
     createdAt: Date,
 
@@ -42,3 +50,5 @@ export const EquipmentModel: Model<EquipmentContract> = mongoose.model<Equipment
     'equipments',
     EquipmentSchema
 );
+
+export const ParentEquipmentRepairModel = mongoose.model<EquipmentRepairContract>('Parent', childEquipmentRepairSchema);

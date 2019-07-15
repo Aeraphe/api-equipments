@@ -8,7 +8,6 @@ router.use('/equipment', EquipmentRoutes,
 );
 
 
-
 export default router;
 
 

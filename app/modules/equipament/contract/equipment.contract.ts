@@ -1,5 +1,6 @@
 import { Document } from 'mongoose';
 import { EquipmentDetailsContract } from './equipment-details.contract';
+import { EquipmentRepairContract } from './equipment-repair.contract';
 
 
 interface Calssify {
@@ -18,4 +19,5 @@ export interface EquipmentContract extends Document {
     calssify: Calssify,
     createdAt: Date,
     details: EquipmentDetailsContract;
+    repairs: EquipmentRepairContract[];
 }

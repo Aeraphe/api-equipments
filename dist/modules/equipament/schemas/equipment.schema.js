@@ -22,6 +22,7 @@ exports.EquipmentSchema = new mongoose_1.Schema({
     tags: [],
     details: equipment_details_schema_1.EquipmentDetailsSchema,
     repairs: [equipment_repair_schema_1.EquipmentRepairSchema],
+    images: [],
     createdAt: Date,
 });
 exports.EquipmentSchema.pre('save', function (next) {

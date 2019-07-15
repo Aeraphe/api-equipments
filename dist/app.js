@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // lib/app.ts
 var express = require("express");
 var bodyParser = require("body-parser");
-var app_equipament_routes_1 = require("./routes/app.equipament.routes");
+var app_routes_1 = require("./app.routes");
 var mongodb_1 = require("./shared/services/mongodb");
 var cookieParser = require("cookie-parser");
 var helmet = require("helmet");
@@ -76,7 +76,7 @@ var App = /** @class */ (function () {
                         // Request protection
                         this.app.use(helmet());
                         // Default Api Route Group
-                        this.app.use('/api/v1', app_equipament_routes_1.default);
+                        this.app.use('/api/v1', app_routes_1.default);
                         // Redirect unmatch routes
                         this.app.use(function (req, res) {
                             res.send('Não sei onde esta o equipamento' + route_path_service_1.default.getRoute(req));

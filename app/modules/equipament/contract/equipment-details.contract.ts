@@ -1,18 +1,28 @@
 import { Document } from 'mongoose';
 
-interface Type {
-    title: string, // Memory
+interface Details {
+  
     item: [
         {
-            type: string, //Car Slot, Internal
+            category: string, //Car Slot, Internal
             description: string
         }
     ]
 }
 
 export interface EquipmentDetailsContract extends Document {
-    _id: string,
-    equipment_id: string,
-    categories: Type[],
-    createdAt: Date,
+
+    network?: Details[],
+    body?: Details[],
+    display?: Details[],
+    platform?:Details[],
+    memory?:Details[],
+    main_camera?:Details[],
+    sound?:Details[],
+    comms?:Details[],
+    features?:Details[],
+    battery?:Details[],
+    misc?:Details[],
+    tests?:Details[],
+
 }

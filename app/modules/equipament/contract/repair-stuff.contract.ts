@@ -8,4 +8,5 @@ export interface RepairStuffContract extends Document {
     description: string,
     image: string,
     shop_url: string,
+    repair:[]  //equipament repairs ids
 }

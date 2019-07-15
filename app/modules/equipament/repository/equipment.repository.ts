@@ -10,14 +10,61 @@ import { from, Observable } from 'rxjs';
 class Repository {
     public route: RoutePathService = routerPathService;
 
+    get(req: Request): Observable<any> {
+        try {
+            const id: any = req.params.id;
+
+            return from(
+                EquipmentModel.findOne({ _id: id })
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error on get equipment', e);
+        }
+    }
+
+    getAll(req: Request, res: Response): Observable<any> {
+        return from(
+            EquipmentModel.find().then(
+
+                equipment => {
+
+                    return res.status(200).json({
+                        message: 'Operação realizada com sucesso!!!',
+                        status: 200,
+                        data: [equipment],
+                        url: this.route.getRoute(req)
+                    });
+                }
+            ).catch(err => {
+                if (err) {
+                    return res.status(404).json({
+                        message: 'Não foi possível efetuar a operação',
+                        status: 404
+                    });
+                }
+            })
+        );
+
+    }
+
     create(req: Request): Observable<any> {
         try {
+            const tags = req.body.title.split(' ');
+            if (tags != null) {
+                req.body.tags = [...tags];
+            }
             const Equipament = new EquipmentModel(req.body);
             return from(
                 Equipament
                     .save()
-                    .then(company => {
-                        return { status: 200, company };
+                    .then(equipment => {
+                        return { status: 200, equipment };
                     })
                     .catch(error => {
                         return { status: 500, error };
@@ -28,106 +75,62 @@ class Repository {
         }
     }
 
-    // update(req): Observable<any> {
-    //         try {
-    //             return from(
-    //                 Company.findOneAndUpdate(
-    //                     { _id: req.params.id },
-    //                     { $set: req.body },
-    //                     { new: true }
-    //                 )
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error:', e);
-    //         }
-    //     }
-    //     /**
-    //      * Update company Address
-    //      * @param req 
-    //      */
-    //     updateAddress(req): Observable<any> {
-    //         try {
-    //             return from(
-    //                 Company.findOneAndUpdate(
-    //                     { _id: req.params.companyId, 'address._id': req.params.addressId },
-    //                     { $set: req.body },
-    //                     { new: true }
-    //                 )
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error:', e);
-    //         }
-    //     }
-    //     /**
-    //      * Update company Phones
-    //      * @param req 
-    //      */
-    //     updatePhones(req): Observable<any> {
-    //         try {
-    //             return from(
-    //                 Company.findOneAndUpdate(
-    //                     { _id: req.params.companyId, 'phones._id': req.params.phonesId },
-    //                     { $set: req.body },
-    //                     { new: true }
-    //                 )
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error:', e);
-    //         }
-    //     }
+    update(req: Request): Observable<any> {
+        try {
+            return from(
+                EquipmentModel.findByIdAndUpdate(req.params.id,
+                    { $set: req.body },
+                    { new: true }
+                )
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error:', e);
+        }
+    }
 
-    //     get(req: Request): Observable<any> {
-    //         try {
-    //             const id: any = req.params.id;
+    delete(req: Request): Observable<any> {
+        try {
+            return from(
+                EquipmentModel.findByIdAndDelete(req.params.id)
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error:', e);
+        }
+    }
 
-    //             return from(
-    //                 Company.findOne({ _id: id })
-    //                     .then(company => {
-    //                         return { status: 200, company };
-    //                     })
-    //                     .catch(error => {
-    //                         return { status: 500, error };
-    //                     })
-    //             );
-    //         } catch (e) {
-    //             console.log('Error on get company', e);
-    //         }
-    //     }
+    search(req: Request): Observable<any> {
+        try {
 
-    //     async getAll(req: Request, res: Response) {
-    //         Company.find({}, (err, company) => {
-    //             if (err) {
-    //                 return res.status(404).json({
-    //                     message: 'Não foi possível efetuar a operação',
-    //                     status: 404
-    //                 });
-    //             }
-    //             return res.status(200).json({
-    //                 message: 'Operação realizada com sucesso!!!',
-    //                 status: 200,
-    //                 data: [company],
-    //                 url: this.route.getRoute(req)
-    //             });
-    //         });
-    //     }
+            const search: any = req.params.search;
+            const userRegex = new RegExp(search, 'i')
+
+            return from(
+                EquipmentModel.find({ title: userRegex })
+                    .then(equipment => {
+                        return { status: 200, equipment };
+                    })
+                    .catch(error => {
+                        return { status: 500, error };
+                    })
+            );
+        } catch (e) {
+            console.log('Error on get equipment', e);
+        }
+    }
+
+
 
 }
 

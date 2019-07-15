@@ -13,5 +13,5 @@ const httpsOptions = {
 
 const server = https.createServer(httpsOptions, app);
 server.listen(PORT, () => {
-    console.log('Express server listening ApiEquipments Https  on port ' + PORT);
+    console.log('\x1b[33m%s\x1b[0m' ,'Express server listening ApiEquipments Https  on port ' + PORT);
 });

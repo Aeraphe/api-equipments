@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var equipament_schema_1 = require("../schemas/equipament.schema");
+var equipment_schema_1 = require("../schemas/equipment.schema");
 var route_path_service_1 = require("../../../shared/services/route-path.service");
 var rxjs_1 = require("rxjs");
 var Repository = /** @class */ (function () {
@@ -106,7 +106,7 @@ var Repository = /** @class */ (function () {
     }
     Repository.prototype.create = function (req) {
         try {
-            var Equipament = new equipament_schema_1.EquipamentModel(req.body);
+            var Equipament = new equipment_schema_1.EquipamentModel(req.body);
             return rxjs_1.from(Equipament
                 .save()
                 .then(function (company) {

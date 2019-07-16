@@ -43,22 +43,20 @@ var Repository = /** @class */ (function () {
     }
     Repository.prototype.create = function (req) {
         return __awaiter(this, void 0, void 0, function () {
-            var id, parent_1, res, e_1;
+            var id, res, e_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        console.log(req.body);
                         id = req.body.equipment_id;
-                        parent_1 = new equipment_schema_1.ParentEquipmentRepairModel(req.body);
                         return [4 /*yield*/, equipment_schema_1.EquipmentModel.findOne({ _id: id })
                                 .then(function (equipment) { return __awaiter(_this, void 0, void 0, function () {
                                 var data;
                                 return __generator(this, function (_a) {
                                     switch (_a.label) {
                                         case 0:
-                                            equipment.repairs.push(parent_1);
+                                            equipment.repairs.push(req.body);
                                             return [4 /*yield*/, equipment.save().then(function (eq) {
                                                     return eq;
                                                 })];

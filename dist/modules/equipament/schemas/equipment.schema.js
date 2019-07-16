@@ -4,11 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
 var equipment_details_schema_1 = require("./equipment-details.schema");
-exports.childEquipmentRepairSchema = new mongoose_1.Schema({
-    type: String,
-    description: String,
-    createdAt: Date
-});
 exports.EquipmentSchema = new mongoose_1.Schema({
     type: {
         type: String,
@@ -25,7 +20,7 @@ exports.EquipmentSchema = new mongoose_1.Schema({
     },
     tags: [],
     details: equipment_details_schema_1.EquipmentDetailsSchema,
-    repairs: [exports.childEquipmentRepairSchema],
+    repairs: [{ repair_type_id: String, title: String, images: [], damage: Number, others: [] }],
     images: [],
     createdAt: Date,
 });
@@ -37,5 +32,4 @@ exports.EquipmentSchema.pre('save', function (next) {
     next();
 });
 exports.EquipmentModel = mongoose.model('equipments', exports.EquipmentSchema);
-exports.ParentEquipmentRepairModel = mongoose.model('Parent', exports.childEquipmentRepairSchema);
 //# sourceMappingURL=equipment.schema.js.map

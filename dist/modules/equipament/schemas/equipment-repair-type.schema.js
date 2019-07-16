@@ -11,4 +11,4 @@ exports.EquipmentRepairTypeSchema = new mongoose_1.Schema({
     createdAt: Date
 });
 exports.EquipmentRepairTypeSchemaModel = mongoose.model('equip_repair_types', exports.EquipmentRepairTypeSchema);
-//# sourceMappingURL=equipment-repair.schema.js.map
+//# sourceMappingURL=equipment-repair-type.schema.js.map

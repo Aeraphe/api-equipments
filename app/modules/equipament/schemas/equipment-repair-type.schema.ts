@@ -4,8 +4,9 @@ import { EquipmentRepairTypeContract } from '../contract/equipment-repair-type.c
 
 export const EquipmentRepairTypeSchema: Schema = new Schema({
 
-    type: String, //Troca de vidro
+
     category: String,
+    title: String,
     description: String,
     images: Array,
     risks: Array,

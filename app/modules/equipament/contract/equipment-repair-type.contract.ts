@@ -13,7 +13,7 @@ interface Image {
 
 export interface EquipmentRepairTypeContract extends Document {
 
-    type: string, //Periferico, Placa
+    category: string, //Periferico, Placa
     title: string, //Troca de Vidro, Troca de CI
     description?: string,
     images: Image[],

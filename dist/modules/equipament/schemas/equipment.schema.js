@@ -4,7 +4,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
 var equipment_details_schema_1 = require("./equipment-details.schema");
-var equipment_repair_schema_1 = require("./equipment-repair.schema");
 exports.EquipmentSchema = new mongoose_1.Schema({
     type: {
         type: String,
@@ -21,7 +20,7 @@ exports.EquipmentSchema = new mongoose_1.Schema({
     },
     tags: [],
     details: equipment_details_schema_1.EquipmentDetailsSchema,
-    repairs: [equipment_repair_schema_1.EquipmentRepairSchema],
+    repairs: [{ repair_type_id: String, title: String, images: [], damage: Number, others: [] }],
     images: [],
     createdAt: Date,
 });

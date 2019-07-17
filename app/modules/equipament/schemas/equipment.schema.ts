@@ -2,7 +2,7 @@ import { Schema, Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { EquipmentContract } from '../contract/equipment.contract';
 import { EquipmentDetailsSchema } from './equipment-details.schema';
-import { EquipmentRepairSchema } from './equipment-repair.schema';
+
 
 
 
@@ -22,7 +22,7 @@ export const EquipmentSchema: Schema = new Schema({
     },
     tags: [], //For search
     details: EquipmentDetailsSchema,
-    repairs: [EquipmentRepairSchema],
+    repairs: [{repair_type_id:String,title:String,images:[],damage:Number,others:[]}],
     images: [],
     createdAt: Date,
 
@@ -42,3 +42,4 @@ export const EquipmentModel: Model<EquipmentContract> = mongoose.model<Equipment
     'equipments',
     EquipmentSchema
 );
+

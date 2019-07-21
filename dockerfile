@@ -8,7 +8,11 @@ COPY   package.json $HOME/api-equipments/
 
 # RUN chown -R app:app $HOME/*
 
+
+
 WORKDIR $HOME/api-equipments
+
+RUN npm i mongoose-data-seed
 
 RUN npm install
 

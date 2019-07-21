@@ -9,8 +9,8 @@ import * as helmet from 'helmet';
 import * as logger from 'morgan';
 import "reflect-metadata";
 import RoutePathService from './shared/services/route-path.service';
-
-
+import * as passport from 'passport';
+import { TokenStrategy } from './core/auth';
 
 export class App {
     public app: express.Application;
@@ -39,8 +39,11 @@ export class App {
         this.app.use(cookieParser());
         // Request protection
         this.app.use(helmet());
+        // Passport Strategy
+        this.app.use(passport.initialize());
+        passport.use(TokenStrategy);
         // Default Api Route Group
-        this.app.use('/api/v1', Routes);
+        this.app.use('/api/v1', passport.authenticate('jwt', { session: false }), Routes);
         // Redirect unmatch routes
         this.app.use((req, res) => {
           res.send('Não sei onde esta o equipamento' + RoutePathService.getRoute(req))

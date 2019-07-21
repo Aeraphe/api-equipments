@@ -45,6 +45,8 @@ var helmet = require("helmet");
 var logger = require("morgan");
 require("reflect-metadata");
 var route_path_service_1 = require("./shared/services/route-path.service");
+var passport = require("passport");
+var auth_1 = require("./core/auth");
 var App = /** @class */ (function () {
     function App() {
         this.app = express();
@@ -75,8 +77,11 @@ var App = /** @class */ (function () {
                         this.app.use(cookieParser());
                         // Request protection
                         this.app.use(helmet());
+                        // Passport Strategy
+                        this.app.use(passport.initialize());
+                        passport.use(auth_1.TokenStrategy);
                         // Default Api Route Group
-                        this.app.use('/api/v1', app_routes_1.default);
+                        this.app.use('/api/v1', passport.authenticate('jwt', { session: false }), app_routes_1.default);
                         // Redirect unmatch routes
                         this.app.use(function (req, res) {
                             res.send('Não sei onde esta o equipamento' + route_path_service_1.default.getRoute(req));

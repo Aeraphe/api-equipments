@@ -12,7 +12,6 @@ COPY   package.json $HOME/api-equipments/
 
 WORKDIR $HOME/api-equipments
 
-RUN npm i mongoose-data-seed
 
 RUN npm install
 

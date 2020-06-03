@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EquipRepairTypeRoutes = void 0;
 var express_1 = require("express");
 var equipament_repair_type_controller_1 = require("../controllers/equipament-repair-type.controller");
 exports.EquipRepairTypeRoutes = express_1.Router();

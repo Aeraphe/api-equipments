@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EquipmentDetailsSchema = void 0;
 var mongoose_1 = require("mongoose");
 exports.EquipmentDetailsSchema = new mongoose_1.Schema({
     network: Array,

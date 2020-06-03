@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TokenStrategy = void 0;
 var passport_jwt_1 = require("passport-jwt");
 require('dotenv').config({ debug: process.env.DEBUG });
 exports.TokenStrategy = new passport_jwt_1.Strategy({

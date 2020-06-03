@@ -1,6 +1,7 @@
 "use strict";
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EquipmentModel = exports.EquipmentSchema = void 0;
 var mongoose_1 = require("mongoose");
 var mongoose = require("mongoose");
 var equipment_details_schema_1 = require("./equipment-details.schema");

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AeroResponse = void 0;
 var route_path_service_1 = require("../shared/services/route-path.service");
 var AeroResponse = /** @class */ (function () {
     function AeroResponse() {

@@ -1,4 +1,11 @@
 "use strict";
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var equipment_schema_1 = require("../schemas/equipment.schema");
 var route_path_service_1 = require("../../../shared/services/route-path.service");
@@ -44,7 +51,7 @@ var Repository = /** @class */ (function () {
         try {
             var tags = req.body.title.split(' ');
             if (tags != null) {
-                req.body.tags = tags.slice();
+                req.body.tags = __spreadArrays(tags);
             }
             var Equipament = new equipment_schema_1.EquipmentModel(req.body);
             return rxjs_1.from(Equipament

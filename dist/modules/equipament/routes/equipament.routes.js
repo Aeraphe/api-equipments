@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EquipmentRoutes = void 0;
 var express_1 = require("express");
 var equipment_controller_1 = require("../controllers/equipment.controller");
 exports.EquipmentRoutes = express_1.Router();
